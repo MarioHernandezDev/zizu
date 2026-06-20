@@ -1,0 +1,19 @@
+services:
+  nuxt_app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: zizu_studio_web
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/src
+      - /src/node_modules
+    environment:
+      - HOST=0.0.0.0
+      - PORT=3000
+    develop:
+      watch:
+        - path: .
+          target: /src
+          action: sync
