@@ -1,0 +1,140 @@
+/* ==========================================================================
+   CONFIGURACIÓN BASE
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,300;0,400;1,300&display=swap');
+
+html, body {
+  background-color: #FAF9F6;
+  color: #121212;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+}
+
+/* ==========================================================================
+   SISTEMA TIPOGRÁFICO EDITORIAL (Clases Globales)
+   ========================================================================== */
+.font-serif-luxury {
+  font-family: 'Playfair Display', 'Didot', 'Bodoni MT', serif;
+  font-weight: 300;
+}
+
+/* Título gigante (Hero de las páginas) */
+.text-display-hero {
+  font-family: 'Playfair Display', 'Didot', 'Bodoni MT', serif;
+  font-size: clamp(48px, 8.5vw, 100px);
+  font-weight: 300;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  line-height: 1.1;
+}
+
+/* Títulos de secciones grandes */
+.text-section-title {
+  font-family: 'Playfair Display', 'Didot', 'Bodoni MT', serif;
+  font-size: clamp(32px, 4.5vw, 52px);
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+}
+
+/* Subtítulos pequeños / Cejas de sección */
+.text-eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: #B0A89A;
+}
+
+/* Párrafos y descripciones estándar */
+.text-body-editorial {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #6E6B66;
+  font-weight: 300;
+}
+
+/* ==========================================================================
+   ESTRUCTURA DE CONTENEDORES Y REJILLAS (Cohesión de márgenes)
+   ========================================================================== */
+.layout-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-left: 32px;  /* Equivalente a px-8 */
+  padding-right: 32px;
+}
+
+@media (min-width: 769px) {
+  .layout-container {
+    padding-left: 56px; /* Equivalente exacto a md:px-14 */
+    padding-right: 56px;
+  }
+}
+
+/* Secciones estándar de la web con espaciados uniformes */
+.section-spacer {
+  position: relative;
+  width: 100%;
+  padding-top: 140px;
+  padding-bottom: 140px;
+}
+
+@media (min-width: 769px) {
+  .section-spacer {
+    padding-top: 160px;
+    padding-bottom: 160px;
+  }
+}
+
+/* ==========================================================================
+   COMPONENTES DE REUTILIZACIÓN GENERAL (Botones, Tarjetas, Efectos)
+   ========================================================================== */
+
+/* Botón estilo Alta Gama / Pasarela */
+.btn-pasarela {
+  position: relative;
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: #FAF9F6;
+  text-decoration: none;
+  padding: 20px 52px;
+  border: 1px solid rgba(250, 249, 246, 0.3);
+  overflow: hidden;
+  transition: color 0.5s cubic-bezier(0.19, 1, 0.22, 1), border-color 0.5s;
+}
+
+.btn-pasarela:hover {
+  color: #121212;
+  border-color: #FAF9F6;
+}
+
+/* Tarjeta minimalista de catálogo */
+.card-editorial {
+  display: flex;
+  flex-direction: column;
+  background: #FAF9F6;
+  border: 0.5px solid rgba(18,18,18,0.08);
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.card-editorial:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.02);
+}
+
+/* Efecto zoom suave para imágenes en hover */
+.img-zoom-wrapper {
+  overflow: hidden;
+}
+
+.img-zoom-wrapper img {
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-editorial:hover .img-zoom-wrapper img {
+  transform: scale(1.04);
+}
