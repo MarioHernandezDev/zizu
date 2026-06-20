@@ -332,7 +332,7 @@ useSeoMeta({
   font-size: 10px;
   letter-spacing: 0.32em;
   text-transform: uppercase;
-  color: #B0A89A;
+  color: #000000;
   margin-bottom: 28px;
 }
 
@@ -377,6 +377,7 @@ useSeoMeta({
   padding: 0 32px 140px;
   max-width: 1280px;
   margin: 0 auto;
+  margin-top: 6rem;
 }
 
 .plans__inner {
@@ -440,7 +441,7 @@ useSeoMeta({
   font-size: 10px;
   letter-spacing: 0.32em;
   text-transform: uppercase;
-  color: #B0A89A;
+  color: #040403;
   margin-bottom: 24px;
 }
 

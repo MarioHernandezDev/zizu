@@ -2,14 +2,11 @@
   <div class="page-models pt-[160px] pb-[140px]">
     <div class="layout-container">
       
-      <header class="mb-16 md:mb-24 max-w-2xl">
-        <span class="text-eyebrow">Zizu Agency</span>
-        <h1 class="text-section-title mt-4 mb-6">Nuestros Modelos</h1>
-        <p class="text-body-editorial">
-          Perfiles singulares adaptados a la narrativa visual de cualquier proyecto. 
-          Trabajamos en Granada y Málaga, ofreciendo una amplia diversidad sin restricciones.
-        </p>
-      </header>
+      <MiniHero 
+        eyebrow="Zizu Agency"
+        title="Nuestros Modelos"
+        description="Perfiles singulares adaptados a la narrativa visual de cualquier proyecto. Trabajamos en Granada y Málaga, ofreciendo una amplia diversidad sin restricciones."
+      />
 
       <main class="grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-12 md:gap-x-8 md:gap-y-16">
         <NuxtLink 
@@ -75,27 +72,27 @@
 </template>
 
 <script setup>
-// Datos estructurados a partir de tu documento original
+// Dataset actualizado con las rutas absolutas correctas (/img/models/...)
 const models = [
-  { id: 'andrea', name: 'Andrea', image: '/img/models/andrea.jpg', measures: { altura: '1,67 cm', pecho: '87 cm', cintura: '67 cm', cadera: '92 cm' } },
-  { id: 'ionela', name: 'Ionela', image: '/img/models/ionela.jpg', measures: { altura: '1,64 cm', pecho: '75 cm', cintura: '64 cm', cadera: '94 cm' } },
-  { id: 'estela', name: 'Estela', image: '/img/models/estela.jpg', measures: { altura: '1,73 cm', pecho: '87 cm', cintura: '62 cm', cadera: '93 cm' } },
-  { id: 'jana', name: 'Jana', image: '/img/models/jana.jpg', measures: { altura: '1,63 cm', pecho: '80 cm', cintura: '64 cm', cadera: '73 cm' } },
-  { id: 'jaime', name: 'Jaime', image: '/img/models/jaime.jpg', measures: { altura: '1,77 cm', pecho: '105 cm', cintura: '80 cm', cadera: '100 cm' } },
-  { id: 'mar', name: 'Mar', image: '/img/models/mar.jpg', measures: { altura: '1,73 cm', pecho: '80 cm', cintura: '63 cm', cadera: '90 cm' } },
-  { id: 'elo', name: 'Elo', image: '/img/models/elo.jpg', measures: { altura: '1,62 cm', pecho: '82 cm', cintura: '65 cm', cadera: '80 cm' } },
-  { id: 'lidia', name: 'Lidia', image: '/img/models/lidia.jpg', measures: { altura: '1,72 cm', pecho: '95 cm', cintura: '66 cm', cadera: '80 cm' } },
-  { id: 'lucia-p', name: 'Lucia P', image: '/img/models/lucia-p.jpg', measures: { altura: '1,68 cm', pecho: '86 cm', cintura: '64 cm', cadera: '98 cm' } },
-  { id: 'lucia-g', name: 'Lucía G', image: '/img/models/lucia-g.jpg', measures: { altura: '1,63 cm', pecho: '78 cm', cintura: '57 cm', cadera: '90 cm' } },
-  { id: 'paula', name: 'Paula', image: '/img/models/paula.jpg', measures: { altura: '1,62 cm', pecho: '85 cm', cintura: '67 cm', cadera: '91 cm' } },
-  { id: 'lulu', name: 'Lulu', image: '/img/models/lulu.jpg', measures: { altura: '1,76 cm', pecho: '83 cm', cintura: '67 cm', cadera: '99 cm' } },
-  { id: 'david', name: 'David', image: '/img/models/david.jpg', measures: { altura: '1,75 cm', pecho: '92 cm', cintura: '83 cm', cadera: '90 cm' } },
-  { id: 'luba', name: 'Luba', image: '/img/models/luba.jpg', measures: { altura: '1,72 cm', pecho: '96 cm', cintura: '65 cm', cadera: '95 cm' } },
-  { id: 'ms', name: 'M.S.', image: '/img/models/ms.jpg', measures: { altura: '1,68 cm', pecho: '97 cm', cintura: '75 cm', cadera: '97 cm' } },
-  { id: 'victoria', name: 'Victoria', image: '/img/models/victoria.jpg', measures: { altura: '1,70 cm', pecho: '81 cm', cintura: '60 cm', cadera: '88 cm' } },
-  { id: 'raquel', name: 'Raquel', image: '/img/models/raquel.jpg', measures: { altura: '1,72 cm', pecho: '87 cm', cintura: '63 cm', cadera: '85 cm' } },
-  { id: 'dalia', name: 'Dalia', image: '/img/models/dalia.jpg', measures: { altura: '1,72 cm', pecho: '84 cm', cintura: '60 cm', cadera: '90 cm' } },
-  { id: 'daniela', name: 'Daniela', image: '/img/models/daniela.jpg', measures: { altura: '1,72 cm', pecho: '90 cm', cintura: '70 cm', cadera: '100 cm' } },
-  { id: 'macarena', name: 'Macarena', image: '/img/models/macarena.jpg', measures: { altura: '1,61 cm', pecho: '95 cm', cintura: '65 cm', cadera: '90 cm' } }
+  { id: 'andrea', name: 'Andrea', image: '/img/models/default-model.jpg', measures: { altura: '1,67 cm', pecho: '87 cm', cintura: '67 cm', cadera: '92 cm' } },
+  { id: 'ionela', name: 'Ionela', image: '/img/models/default-model.jpg', measures: { altura: '1,64 cm', pecho: '75 cm', cintura: '64 cm', cadera: '94 cm' } },
+  { id: 'estela', name: 'Estela', image: '/img/models/default-model.jpg', measures: { altura: '1,73 cm', pecho: '87 cm', cintura: '62 cm', cadera: '93 cm' } },
+  { id: 'jana', name: 'Jana', image: '/img/models/default-model.jpg', measures: { altura: '1,63 cm', pecho: '80 cm', cintura: '64 cm', cadera: '73 cm' } },
+  { id: 'jaime', name: 'Jaime', image: '/img/models/default-model.jpg', measures: { altura: '1,77 cm', pecho: '105 cm', cintura: '80 cm', cadera: '100 cm' } },
+  { id: 'mar', name: 'Mar', image: '/img/models/default-model.jpg', measures: { altura: '1,73 cm', pecho: '80 cm', cintura: '63 cm', cadera: '90 cm' } },
+  { id: 'elo', name: 'Elo', image: '/img/models/default-model.jpg', measures: { altura: '1,62 cm', pecho: '82 cm', cintura: '65 cm', cadera: '80 cm' } },
+  { id: 'lidia', name: 'Lidia', image: '/img/models/default-model.jpg', measures: { altura: '1,72 cm', pecho: '95 cm', cintura: '66 cm', cadera: '80 cm' } },
+  { id: 'lucia-p', name: 'Lucia P', image: '/img/models/default-model.jpg', measures: { altura: '1,68 cm', pecho: '86 cm', cintura: '64 cm', cadera: '98 cm' } },
+  { id: 'lucia-g', name: 'Lucía G', image: '/img/models/default-model.jpg', measures: { altura: '1,63 cm', pecho: '78 cm', cintura: '57 cm', cadera: '90 cm' } },
+  { id: 'paula', name: 'Paula', image: '/img/models/default-model.jpg', measures: { altura: '1,62 cm', pecho: '85 cm', cintura: '67 cm', cadera: '91 cm' } },
+  { id: 'lulu', name: 'Lulu', image: '/img/models/default-model.jpg', measures: { altura: '1,76 cm', pecho: '83 cm', cintura: '67 cm', cadera: '99 cm' } },
+  { id: 'david', name: 'David', image: '/img/models/default-model.jpg', measures: { altura: '1,75 cm', pecho: '92 cm', cintura: '83 cm', cadera: '90 cm' } },
+  { id: 'luba', name: 'Luba', image: '/img/models/default-model.jpg', measures: { altura: '1,72 cm', pecho: '96 cm', cintura: '65 cm', cadera: '95 cm' } },
+  { id: 'ms', name: 'M.S.', image: '/img/models/default-model.jpg', measures: { altura: '1,68 cm', pecho: '97 cm', cintura: '75 cm', cadera: '97 cm' } },
+  { id: 'victoria', name: 'Victoria', image: '/img/models/default-model.jpg', measures: { altura: '1,70 cm', pecho: '81 cm', cintura: '60 cm', cadera: '88 cm' } },
+  { id: 'raquel', name: 'Raquel', image: '/img/models/default-model.jpg', measures: { altura: '1,72 cm', pecho: '87 cm', cintura: '63 cm', cadera: '85 cm' } },
+  { id: 'dalia', name: 'Dalia', image: '/img/models/default-model.jpg', measures: { altura: '1,72 cm', pecho: '84 cm', cintura: '60 cm', cadera: '90 cm' } },
+  { id: 'daniela', name: 'Daniela', image: '/img/models/default-model.jpg', measures: { altura: '1,72 cm', pecho: '90 cm', cintura: '70 cm', cadera: '100 cm' } },
+  { id: 'macarena', name: 'Macarena', image: '/img/models/default-model.jpg', measures: { altura: '1,61 cm', pecho: '95 cm', cintura: '65 cm', cadera: '90 cm' } }
 ]
 </script>

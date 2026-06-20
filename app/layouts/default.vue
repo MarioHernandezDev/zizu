@@ -4,8 +4,8 @@
     <header
       class="fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-in-out"
       :class="[
-        scrolled ? 'bg-[#FAF9F6]/95 backdrop-blur-md border-b border-black/[0.07]' : 'bg-transparent border-b border-black/[0.05]',
-        menuOpen ? 'h-[120px]' : (scrolled ? 'h-[80px]' : 'h-[120px]')
+        (scrolled || !isHome) ? 'bg-[#FAF9F6]/95 backdrop-blur-md border-b border-black/[0.07]' : 'bg-transparent border-b border-black/[0.05]',
+        menuOpen ? 'h-[120px]' : ((scrolled || !isHome) ? 'h-[80px]' : 'h-[120px]')
       ]"
     >
       <div class="max-w-7xl mx-auto px-8 md:px-14 h-full flex items-center justify-between relative z-50">
@@ -14,7 +14,7 @@
           <img
             src="/img/logo.png"
             alt="Zizu Studio"
-            class="h-full w-auto object-contain object-left transition-opacity duration-300 group-hover:opacity-60"
+            class="h-full w-auto object-contain object-left transition-all duration-300 group-hover:opacity-60"
           />
         </NuxtLink>
 
@@ -24,7 +24,7 @@
             :key="link.path"
             :to="link.path"
             class="nav-link"
-            :class="scrolled ? 'nav-link--scrolled' : 'nav-link--transparent'"
+            :class="(scrolled || !isHome) ? 'nav-link--scrolled' : 'nav-link--transparent'"
             active-class="nav-link--active"
             :aria-current="$route.path === link.path ? 'page' : undefined"
           >
@@ -46,21 +46,21 @@
             class="block w-5 h-px transition-all duration-400 origin-center"
             :class="[
               menuOpen ? 'rotate-45 translate-y-[3px]' : '',
-              (scrolled || menuOpen) ? 'bg-[#121212]' : 'bg-[#FAF9F6]'
+              (scrolled || !isHome || menuOpen) ? 'bg-[#121212]' : 'bg-[#FAF9F6]'
             ]"
           />
           <span
             class="block w-5 h-px transition-all duration-300"
             :class="[
               menuOpen ? 'opacity-0 scale-x-50' : '',
-              (scrolled || menuOpen) ? 'bg-[#121212]' : 'bg-[#FAF9F6]'
+              (scrolled || !isHome || menuOpen) ? 'bg-[#121212]' : 'bg-[#FAF9F6]'
             ]"
           />
           <span
             class="block w-5 h-px transition-all duration-400 origin-center"
             :class="[
               menuOpen ? '-rotate-45 -translate-y-[3px]' : '',
-              (scrolled || menuOpen) ? 'bg-[#121212]' : 'bg-[#FAF9F6]'
+              (scrolled || !isHome || menuOpen) ? 'bg-[#121212]' : 'bg-[#FAF9F6]'
             ]"
           />
         </button>
@@ -119,7 +119,7 @@
 </template>
 
 <script setup>
-import { ref, watch, onMounted, onUnmounted } from 'vue'
+import { ref, watch, onMounted, onUnmounted, computed } from 'vue'
 import { useRoute } from 'vue-router'
 
 const navLinks = [
@@ -131,6 +131,9 @@ const navLinks = [
 const scrolled = ref(false)
 const menuOpen = ref(false)
 const route = useRoute()
+
+// Variable computada reactiva para comprobar si estamos en la Home ('/')
+const isHome = computed(() => route.path === '/')
 
 // Bloquear el scroll de la página trasera cuando el menú está desplegado
 watch(menuOpen, (val) => {
@@ -175,6 +178,11 @@ onMounted(() => {
   line-height: 18px;
   white-space: nowrap;
   transition: color 0.44s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Solo aplicamos sombra de texto en la home cuando no se ha hecho scroll */
+.nav-link--transparent .nav-link__top,
+.nav-link--transparent .nav-link__bot {
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
 }
 
@@ -198,7 +206,7 @@ onMounted(() => {
   width: 100%;
 }
 
-/* ─── ESCENARIO 1: Nav transparente arriba (Sobre Hero Oscuro) ─── */
+/* ─── ESCENARIO 1: Nav transparente arriba (Sobre Hero Oscuro - Solo en Home) ─── */
 .nav-link--transparent .nav-link__top {
   color: rgba(250, 249, 246, 0.7);
 }
@@ -212,7 +220,7 @@ onMounted(() => {
   color: #FAF9F6;
 }
 
-/* ─── ESCENARIO 2: Nav tras hacer Scroll (Sobre Fondo Claro) ─── */
+/* ─── ESCENARIO 2: Nav tras hacer Scroll u otras páginas (Sobre Fondo Claro) ─── */
 .nav-link--scrolled .nav-link__top {
   color: #706E6B;
 }
@@ -264,7 +272,7 @@ header img {
 }
 
 .nav-link:nth-child(1) { animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.22s both; }
-.nav-link:nth-child(2) { animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.30s both; }
+.nav-child:nth-child(2) { animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.30s both; }
 .nav-link:nth-child(3) { animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.38s both; }
 
 @media (prefers-reduced-motion: reduce) {
@@ -279,8 +287,8 @@ header img {
 }
 
 .mobile-menu-overlay {
-  background-color: rgba(250, 249, 246, 0.98); /* Forzado color crema sólido de alta opacidad */
+  background-color: rgba(250, 249, 246, 0.98);
   backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px); /* Corrección crucial para navegadores móviles en iOS */
+  -webkit-backdrop-filter: blur(20px);
 }
 </style>
